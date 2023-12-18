@@ -22,7 +22,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
 
     const loginUser = e => {
         e.preventDefault();
-        fetch("http://localhost:5000/api/auth/login", {
+        fetch("https://notekeeperapp.onrender.com/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -32,7 +32,7 @@ export default function Modal({open,closeModal,data}) {
         let token = localStorage.getItem("token");
 
         e.preventDefault();
-        fetch("http://localhost:5000/api/notes/updateNote",{
+        fetch("https://notekeeperapp.onrender.com/api/notes/updateNote",{
             method:"PATCH",
             headers:{
                 "auth-token":token,

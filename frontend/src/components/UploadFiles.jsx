@@ -31,7 +31,7 @@ export default function UploadFiles() {
 
 
         let token = localStorage.getItem("token");
-        fetch("http://localhost:5000/api/files/uploadDoc",{
+        fetch("https://notekeeperapp.onrender.com/api/files/uploadDoc",{
             method:"POST",
             headers:{
                 "auth-token":token,

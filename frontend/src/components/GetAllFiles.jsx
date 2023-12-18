@@ -7,7 +7,7 @@ export default function GetAllFiles() {
     useEffect(()=>{
         let token = localStorage.getItem("token");
 
-        fetch("http://localhost:5000/api/files/getAllFiles",{
+        fetch("https://notekeeperapp.onrender.com/api/files/getAllFiles",{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -22,7 +22,7 @@ export default function GetAllFiles() {
     },[]);
 
     const openFile = (ele) =>{
-        window.open(`http://localhost:5000/${ele.filePath}`,"_blank");
+        window.open(`https://notekeeperapp.onrender.com/${ele.filePath}`,"_blank");
     }
 
   return (

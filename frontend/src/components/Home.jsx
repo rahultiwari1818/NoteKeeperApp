@@ -12,7 +12,7 @@ export default function Home() {
 
       let token = localStorage.getItem("token");
 
-      fetch("http://localhost:5000/api/auth/getUser",{
+      fetch("https://notekeeperapp.onrender.com/api/auth/getUser",{
         method:"GET",
         headers:{
           "Content-Type":"applicatin/json",

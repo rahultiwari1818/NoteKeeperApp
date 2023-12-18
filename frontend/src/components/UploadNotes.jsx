@@ -27,7 +27,7 @@ export default function UploadNotes({user}) {
         
         let token = localStorage.getItem("token");
         e.preventDefault();
-        fetch("http://localhost:5000/api/notes/addNote",{
+        fetch("https://notekeeperapp.onrender.com/api/notes/addNote",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

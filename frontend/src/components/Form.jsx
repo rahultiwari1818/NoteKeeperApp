@@ -17,7 +17,7 @@ export default function Form({ isLoggedIn, setIsLoggedIn }) {
 
     const signUp = e => {
         e.preventDefault();
-        fetch("http://localhost:5000/api/auth/createUser", {
+        fetch("https://notekeeperapp.onrender.com/api/auth/createUser", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

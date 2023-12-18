@@ -7,7 +7,7 @@ export default function DeleteModal({open,closeModal,id}) {
 
         const token = localStorage.getItem("token");
 
-        fetch(`http://localhost:5000/api/notes/delete/${id}`,{
+        fetch(`https://notekeeperapp.onrender.com/api/notes/delete/${id}`,{
             headers:{
                 "auth-token":token,
             },

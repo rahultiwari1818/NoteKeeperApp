@@ -20,7 +20,7 @@ export default function GetNotes() {
 
         let token = localStorage.getItem("token");
 
-        fetch(`http://localhost:5000/api/notes/getAllNotes`,{
+        fetch(`https://notekeeperapp.onrender.com/api/notes/getAllNotes`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -39,7 +39,7 @@ export default function GetNotes() {
             console.log(err);
         })
 
-        fetch(`http://localhost:5000/api/notes/getTags`,{
+        fetch(`https://notekeeperapp.onrender.com/api/notes/getTags`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -63,7 +63,7 @@ export default function GetNotes() {
         setSearch(old=>
             ({...old,[name]:tag})
         )
-        fetch(`http://localhost:5000/api/notes/getNotes/${tag}/${search.title}`,{
+        fetch(`https://notekeeperapp.onrender.com/api/notes/getNotes/${tag}/${search.title}`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -87,7 +87,7 @@ export default function GetNotes() {
         setSearch(old=>
             ({...old,[name]:title})
         );
-        fetch(`http://localhost:5000/api/notes/getNotes/${search.tag}/${title}`,{
+        fetch(`https://notekeeperapp.onrender.com/api/notes/getNotes/${search.tag}/${title}`,{
             method:"GET",
             headers:{
                 "auth-token":token,
