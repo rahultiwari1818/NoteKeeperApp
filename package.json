@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "frontend": "cd frontend &&  npm start",
-    "api": "cd api && npm start",
-    "dev": "concurrently \" npm run frontend\" \"npm run api\""
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
   },
   "author": "Rahul Tiwari",
   "license": "ISC",
