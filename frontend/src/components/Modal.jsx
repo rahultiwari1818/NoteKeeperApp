@@ -3,6 +3,7 @@ import {ReactComponent as Close} from "../assets/images/CloseIcon.svg";
 import { toast } from 'react-toastify';
 
 export default function Modal({open,closeModal,data}) {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const [note,setNote] = useState({
         title:"",
@@ -32,7 +33,7 @@ export default function Modal({open,closeModal,data}) {
         let token = localStorage.getItem("token");
 
         e.preventDefault();
-        fetch("https://notekeeperapp.onrender.com/api/notes/updateNote",{
+        fetch(`${BASE_URL}/api/notes/updateNote`,{
             method:"PATCH",
             headers:{
                 "auth-token":token,
@@ -59,7 +60,7 @@ export default function Modal({open,closeModal,data}) {
     }
 
   return (
-    open && <div className='h-[100vh] w-[100vw] overflow-hidden absolute top-0 left-0 right-0 flex justify-center items-center bg-gray-50 bg-opacity-40'>
+    open && <div className='h-[100vh] w-[100vw] overflow-hidden fixed top-0 left-0 right-0 flex justify-center items-center bg-gray-50 bg-opacity-40'>
         <div className="bg-white rounded-xl shadow-xl px-5 py-5">
             <div className="flex justify-between items-center text-center bg-red-500 text-white text-lg p-3">
                 <p></p>
@@ -70,7 +71,7 @@ export default function Modal({open,closeModal,data}) {
             <input type="text" value={note.title} onChange={noteValueChanged} name='title' placeholder='Enter Title'  className='p-3 w-full rounded shadow my-3 ' />
             <textarea name="description" id="" cols="30" rows="10" value={note.description} onChange={noteValueChanged} className='p-3 w-full rounded shadow my-3 ' placeholder='Enter Some Description'></textarea>
             <input type="text" value={note.tag} onChange={noteValueChanged} name='tag' placeholder='Enter Tag'  className='p-3 w-full rounded shadow my-3 ' />
-            <input type="submit" value="Upload" className='px-5 py-2 rounded my-3 shadow bg-red-500' />
+            <input type="submit" value="Update" className='px-5 py-2 rounded my-3 shadow bg-red-500' />
         </form>
         </div>
     </div>

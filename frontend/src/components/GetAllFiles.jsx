@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import  PdfIcon from "../assets/images/pdfIcon.png";
 export default function GetAllFiles() {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const [data,setData] = useState([]);
 
     useEffect(()=>{
         let token = localStorage.getItem("token");
 
-        fetch("https://notekeeperapp.onrender.com/api/files/getAllFiles",{
+        fetch(`${BASE_URL}/api/files/getAllFiles`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -22,7 +23,7 @@ export default function GetAllFiles() {
     },[]);
 
     const openFile = (ele) =>{
-        window.open(`https://notekeeperapp.onrender.com/${ele.filePath}`,"_blank");
+        window.open(`${BASE_URL}/${ele.filePath}`,"_blank");
     }
 
   return (

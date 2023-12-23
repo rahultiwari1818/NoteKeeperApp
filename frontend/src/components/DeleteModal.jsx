@@ -2,12 +2,12 @@ import React from 'react'
 import { toast } from 'react-toastify';
 
 export default function DeleteModal({open,closeModal,id}) {
-
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const deleteNote = e =>{
 
         const token = localStorage.getItem("token");
 
-        fetch(`https://notekeeperapp.onrender.com/api/notes/delete/${id}`,{
+        fetch(`${BASE_URL}/api/notes/delete/${id}`,{
             headers:{
                 "auth-token":token,
             },
@@ -29,7 +29,7 @@ export default function DeleteModal({open,closeModal,id}) {
 
   return (
     open &&
-    <div className='h-screen w-screen absolute top-0 left-0 right-0 bg-opacity-40 bg-gray-50 flex justify-center items-center '>
+    <div className='h-screen w-screen fixed top-0 left-0 right-0 bg-opacity-40 bg-gray-50 flex justify-center items-center '>
             <div className="bg-white p-10 shadow-xl rounded-xl">
                 <p className='text-xl text-center'>Are You Sure To Delete This Note Permanently?<br/>
                 This Step Can't be Revert Back.!

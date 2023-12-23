@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { Bars } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 
 export default function Form({ isLoggedIn, setIsLoggedIn }) {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [userdata, setUserdata] = useState({ name: "", email: "", password: "" })
+    const [isLoading, setIsLoading] = useState(false);
 
     const inputValueChanged = e => {
         const { name, value } = e.target;
@@ -16,8 +20,9 @@ export default function Form({ isLoggedIn, setIsLoggedIn }) {
     }, [])
 
     const signUp = e => {
+        setIsLoading(true);
         e.preventDefault();
-        fetch("https://notekeeperapp.onrender.com/api/auth/createUser", {
+        fetch(`${BASE_URL}/api/auth/createUser`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -33,11 +38,31 @@ export default function Form({ isLoggedIn, setIsLoggedIn }) {
                 })
             })
             .catch((err) => {
-                console.log(err)
+                toast.error(err.message);
+            })
+            .finally(()=>{
+                setIsLoading(false);
             })
     }
 
     return (
+
+        <>
+            {
+                isLoading &&
+                <section className=' flex justify-center items-center top-0 right-0 left-0 bottom-0 h-screen w-screen fixed bg-opacity-80  bg-gray-100'>
+                    <Bars
+                        height="80"
+                        width="80"
+                        color="#4fa94d"
+                        ariaLabel="bars-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                    />
+                </section>
+
+            }  
         <div className='p-3 flex items-center justify-center h-[80vh] '>
             <div className='md:w-[40%] shadow-xl rounded-xl p-10'>
 
@@ -54,6 +79,7 @@ export default function Form({ isLoggedIn, setIsLoggedIn }) {
                 </form>
             </div>
         </div>
+        </>
 
 
     )

@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify';
 
 export default function UploadFiles() {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [data,setData] = useState({
         file:null,
         description:"",
@@ -12,7 +14,7 @@ export default function UploadFiles() {
     const valueChanged  = e =>{
         const {name,value} = e.target;
 
-        if(name == "file"){
+        if(name === "file"){
             const file = e.target.files[0];
             setData(old=>({...old,[name]:file}))
         }
@@ -31,7 +33,7 @@ export default function UploadFiles() {
 
 
         let token = localStorage.getItem("token");
-        fetch("https://notekeeperapp.onrender.com/api/files/uploadDoc",{
+        fetch(`${BASE_URL}/api/files/uploadDoc`,{
             method:"POST",
             headers:{
                 "auth-token":token,

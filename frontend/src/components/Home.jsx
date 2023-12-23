@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import UploadNotes from './UploadNotes';
 
 export default function Home() {
+  const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const navigate = useNavigate();
 
@@ -12,7 +13,7 @@ export default function Home() {
 
       let token = localStorage.getItem("token");
 
-      fetch("https://notekeeperapp.onrender.com/api/auth/getUser",{
+      fetch(`${BASE_URL}/api/auth/getUser`,{
         method:"GET",
         headers:{
           "Content-Type":"applicatin/json",
