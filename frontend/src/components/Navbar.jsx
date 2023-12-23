@@ -10,23 +10,27 @@ export default function Navbar({isLoggedIn}) {
     //     console.log("render");
     // },[])
 
+    const closeSideBar = () =>{
+        setShowSideBar(false);
+    }
+
 
     return (
         <nav className='py-5 px-3 bg-blue-500  shadow-lg top-0 sticky '>
             <section className='lg:flex justify-between items-center'>
 
                 <section>
-                    <img src={Logo} alt='' srcset='' class='lg:h-[10vh] lg:w-[15vw] md:h-[10vh] md:w-[15vw] h-[8vh] w-[14vw] ' />
+                    <img src={Logo} alt=''  className='lg:h-[10vh] lg:w-[15vw] md:h-[10vh] md:w-[15vw] h-[8vh] w-[14vw] ' />
                 </section>
                 <section>
                     <section className='lg:block hidden'>
-                        <section class='flex justify-between items-center'>
+                        <section className='flex justify-between items-center'>
                             {
                                 !isLoggedIn
                                 &&
                                 <>
-                                    <Link to="login" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'> Login </Link>
-                                    <Link to="/" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'> Signup </Link>
+                                    <Link to="login" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3' onClick={()=>closeSideBar()}> Login </Link>
+                                    <Link to="/" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3' onClick={()=>closeSideBar()}> Signup </Link>
                                 </>
 
                             }
@@ -34,19 +38,19 @@ export default function Navbar({isLoggedIn}) {
                                 isLoggedIn
                                 &&
                                 <>
-                                    <Link to="Home" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'> Home </Link>
-                                    <Link to="getNotes" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'> Notes </Link>
-                                    <Link to="uploadFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'> Upload Files </Link>
-                                    <Link to="getAllFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'> Files </Link>
-                                    <Link to="login" className='py-3 px-4 bg-green-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg shadow-lg mx-3'>Logout</Link>
+                                    <Link to="Home" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3'  onClick={()=>closeSideBar()}> Home </Link>
+                                    <Link to="getNotes" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3' onClick={()=>closeSideBar()}> Notes </Link>
+                                    <Link to="uploadFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3' onClick={()=>closeSideBar()}> Upload Files </Link>
+                                    <Link to="getAllFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg mx-3' onClick={()=>closeSideBar()}> Files </Link>
+                                    <Link to="login" className='py-3 px-4 bg-green-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg shadow-lg mx-3' onClick={()=>closeSideBar()}>Logout</Link>
                                 </>
                             }
 
                         </section>
                     </section>
-                    <section class='lg:hidden block'>
+                    <section className='lg:hidden block'>
 
-                        <section class='cursor-pointer top-7 right-4 absolute p-3 bg-white rounded-lg' onClick={() => {
+                        <section className='cursor-pointer top-7 right-4 absolute p-3 bg-white rounded-lg' onClick={() => {
                             setShowSideBar(!showSideBar)
                         }}>
                             <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
@@ -57,7 +61,7 @@ export default function Navbar({isLoggedIn}) {
                         {
                             showSideBar &&
                             <section className=' '>
-                                <section class='cursor-pointer top-7 right-4 absolute p-3 bg-white rounded-lg' onClick={() => {
+                                <section className='cursor-pointer top-7 right-4 absolute p-3 bg-white rounded-lg' onClick={() => {
                                     setShowSideBar(!showSideBar)
                                 }} >
                                     <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -69,8 +73,8 @@ export default function Navbar({isLoggedIn}) {
                                     !isLoggedIn
                                     &&
                                     <>
-                                        <Link to="login" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block'> Login </Link>
-                                        <Link to="/" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block'> Signup </Link>
+                                        <Link to="login" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block' onClick={()=>closeSideBar()}> Login </Link>
+                                        <Link to="/" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block' onClick={()=>closeSideBar()}> Signup </Link>
                                     </>
 
                                 }
@@ -78,11 +82,11 @@ export default function Navbar({isLoggedIn}) {
                                     isLoggedIn
                                     &&
                                     <>
-                                        <Link to="Home" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block'> Home </Link>
-                                        <Link to="getNotes" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block'> Notes </Link>
-                                        <Link to="uploadFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block'> Upload Files </Link>
-                                        <Link to="getAllFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3' block> Files </Link>
-                                        <Link to="login" className='py-3 px-4 bg-white text-red-500 hover:bg-red-500 hover:text-white rounded-lg shadow-lg m-3 block'>Logout</Link>
+                                        <Link to="Home" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block' onClick={()=>closeSideBar()}> Home </Link>
+                                        <Link to="getNotes" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block' onClick={()=>closeSideBar()}> Notes </Link>
+                                        <Link to="uploadFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3 block' onClick={()=>closeSideBar()}> Upload Files </Link>
+                                        <Link to="getAllFiles" className='py-3 px-4 bg-green-500  text-white shadow-lg rounded-lg m-3'  onClick={()=>closeSideBar()}> Files </Link>
+                                        <Link to="login" className='py-3 px-4 bg-white text-red-500 hover:bg-red-500 hover:text-white rounded-lg shadow-lg m-3 block' onClick={()=>closeSideBar()}>Logout</Link>
                                     </>
                                 }
 

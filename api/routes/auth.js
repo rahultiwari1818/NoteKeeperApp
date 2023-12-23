@@ -48,7 +48,7 @@ router.post("/createUser",[
 
         const token = jwt.sign(data,JWT_SECRET);
 
-       return res.status(200).json({"message":"User Created Successfully.!",result:true,token});
+       return res.status(200).json({"message":"Sign Up Successfully.!",result:true,token});
     } catch (error) {
         console.error(error.message);
         return res.status(500).json({"message":"Internal Server Error"});        

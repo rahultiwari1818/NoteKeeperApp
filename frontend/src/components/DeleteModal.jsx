@@ -29,7 +29,7 @@ export default function DeleteModal({open,closeModal,id}) {
 
   return (
     open &&
-    <div className='h-screen w-screen absolute top-0 left-0 right-0 bg-opacity-40 bg-gray-50 flex justify-center items-center '>
+    <div className='h-screen w-screen fixed top-0 left-0 right-0 bg-opacity-40 bg-gray-50 flex justify-center items-center '>
             <div className="bg-white p-10 shadow-xl rounded-xl">
                 <p className='text-xl text-center'>Are You Sure To Delete This Note Permanently?<br/>
                 This Step Can't be Revert Back.!
