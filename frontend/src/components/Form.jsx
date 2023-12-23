@@ -3,6 +3,8 @@ import { Bars } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 
 export default function Form({ isLoggedIn, setIsLoggedIn }) {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [userdata, setUserdata] = useState({ name: "", email: "", password: "" })
     const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +22,7 @@ export default function Form({ isLoggedIn, setIsLoggedIn }) {
     const signUp = e => {
         setIsLoading(true);
         e.preventDefault();
-        fetch("http://localhost:5000/api/auth/createUser", {
+        fetch(`${BASE_URL}/api/auth/createUser`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

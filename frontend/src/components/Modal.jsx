@@ -3,6 +3,7 @@ import {ReactComponent as Close} from "../assets/images/CloseIcon.svg";
 import { toast } from 'react-toastify';
 
 export default function Modal({open,closeModal,data}) {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const [note,setNote] = useState({
         title:"",
@@ -32,7 +33,7 @@ export default function Modal({open,closeModal,data}) {
         let token = localStorage.getItem("token");
 
         e.preventDefault();
-        fetch("http://localhost:5000/api/notes/updateNote",{
+        fetch(`${BASE_URL}/api/notes/updateNote`,{
             method:"PATCH",
             headers:{
                 "auth-token":token,

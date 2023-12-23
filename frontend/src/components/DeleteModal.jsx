@@ -2,12 +2,12 @@ import React from 'react'
 import { toast } from 'react-toastify';
 
 export default function DeleteModal({open,closeModal,id}) {
-
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const deleteNote = e =>{
 
         const token = localStorage.getItem("token");
 
-        fetch(`http://localhost:5000/api/notes/delete/${id}`,{
+        fetch(`${BASE_URL}/api/notes/delete/${id}`,{
             headers:{
                 "auth-token":token,
             },

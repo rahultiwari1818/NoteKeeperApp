@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function Login({ isLoggedIn, setIsLoggedIn }) {
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
     const [userdata, setUserdata] = useState({ email: "", password: "" });
     const [isInvalidEmail, setIsInvalidEmail] = useState(false);
     const [isInvalidPasswd, setIsInvalidPasswd] = useState(false);
@@ -26,7 +28,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
     const loginUser = e => {
         setIsLoading(true);
         e.preventDefault();
-        fetch("http://localhost:5000/api/auth/login", {
+        fetch(`${BASE_URL}/api/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

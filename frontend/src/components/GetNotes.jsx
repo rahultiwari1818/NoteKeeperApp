@@ -4,7 +4,7 @@ import DeleteModal from './DeleteModal';
 import Notes from './Notes';
 
 export default function GetNotes() {
-
+    const   BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const [notes,setNotes] = useState([]);
     const [tags,setTags] = useState([]);
     const [search,setSearch] = useState({    tag:"ALL",title:"" });
@@ -20,7 +20,7 @@ export default function GetNotes() {
 
         let token = localStorage.getItem("token");
 
-        fetch(`http://localhost:5000/api/notes/getAllNotes`,{
+        fetch(`${BASE_URL}/api/notes/getAllNotes`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -39,7 +39,7 @@ export default function GetNotes() {
             console.log(err);
         })
 
-        fetch(`http://localhost:5000/api/notes/getTags`,{
+        fetch(`${BASE_URL}/api/notes/getTags`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -63,7 +63,7 @@ export default function GetNotes() {
         setSearch(old=>
             ({...old,[name]:tag})
         )
-        fetch(`http://localhost:5000/api/notes/getNotes/${tag}/${search.title}`,{
+        fetch(`${BASE_URL}/api/notes/getNotes/${tag}/${search.title}`,{
             method:"GET",
             headers:{
                 "auth-token":token,
@@ -87,7 +87,7 @@ export default function GetNotes() {
         setSearch(old=>
             ({...old,[name]:title})
         );
-        fetch(`http://localhost:5000/api/notes/getNotes/${search.tag}/${title}`,{
+        fetch(`${BASE_URL}/api/notes/getNotes/${search.tag}/${title}`,{
             method:"GET",
             headers:{
                 "auth-token":token,
